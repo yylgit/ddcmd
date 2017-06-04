@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style lang="">
+    * {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+    html,body {
+      height: 100%;
+    }
+    .container {
+      overflow: hidden;
+    }
+    .iphone {
+      width: 375px;
+      height: 717px;
+      background-image: url('./iphone6_bg.png');
+      background-size: 375px 717px;
+      position: fixed;
+      right: 100px;
+      top: -60px;
+    }
+    .page-menu {
+      position: fixed;
+      left: 40px;
+      top: 90px;
+    }
+    ul {
+      list-style: none;
+      height: 500px;
+      overflow: scroll;
+    }
+    a {
+      text-decoration: none;
+      color: #636363;
+    }
+    a:hover,a:active {
+      color: #fa8919;
+    }
+    .page-menu a.active {
+      color: #fa8919;
+    }
+    .iphone-container {
+      width: 330px;
+      height: 540px;
+      position: absolute;
+      top: 88px;
+      left: 23px;
+    }
+    .page-count {
+      position: fixed;
+      left: 40px;
+      top: 50px;
+      color:#fa8919;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="page-count">总页面数：{{pageList.length}}</div>
+    <ul class="page-menu" id="pageMenu">
+      {{#each pageList}}
+      <li>
+        <a href="javascript:void(0)">{{this}}</a>
+      </li>
+      {{/each}}
+    </ul>
+    <div class="iphone">
+      <iframe class="iphone-container" id="iphoneFrame" src="" frameborder="0"></iframe>
+    </div>
+  </div>
+  <script>
+    var vm = {};
+    var pageMenu = document.querySelector('#pageMenu');
+    var activePage = "";
+    var iphoneFrame = document.querySelector("#iphoneFrame");
+    Object.defineProperty(vm, 'activePage',{
+      enumerable: true,
+      configurable: false,
+      set: function (value) {
+        activePage = value;
+        iphoneFrame.src = value;
+      },
+      get: function () {
+        return activePage;
+      }
+    })
+    pageMenu.addEventListener('click', function (e) {
+      let target = e.target;
+      if(target.nodeName.toUpperCase() === 'A') {
+        document.querySelectorAll('#pageMenu a').forEach(function  (item){
+          item.classList.remove('active');
+        })
+        target.classList.add('active');
+        vm.activePage = target.innerHTML;
+      }
+    })
+
+    var list = document.querySelectorAll('#pageMenu a')
+    if(list.length > 0) {
+      iphoneFrame.src = list[0].innerHTML;
+      list[0].classList.add('active');
+    }
+
+
+  </script>
+</body>
+</html>
