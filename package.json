@@ -11,9 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@git.xiaojukeji.com:yangyiliang/ddcmd.git"
+    "url": "https://github.com/yylgit/ddcmd.git"
   },
-  "author": "yangyiliang",
+  "author": {
+    "name": "yangyiliang",
+    "email": "ysuyyl@126.com"
+  },
   "license": "ISC",
   "dependencies": {
     "commander": "^2.9.0",
