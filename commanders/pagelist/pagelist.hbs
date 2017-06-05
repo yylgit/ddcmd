@@ -33,7 +33,7 @@
     }
     ul {
       list-style: none;
-      height: 500px;
+      height: 450px;
       overflow: scroll;
     }
     a {
@@ -59,6 +59,11 @@
       top: 50px;
       color:#fa8919;
     }
+
+    .open-url {
+      margin-left: 50px;
+      font-size: 12px;
+    }
   </style>
 </head>
 <body>
@@ -67,7 +72,7 @@
     <ul class="page-menu" id="pageMenu">
       {{#each pageList}}
       <li>
-        <a href="javascript:void(0)">{{this}}</a>
+        <a href="javascript:void(0)">{{this}}</a><a class="open-url" href="{{this}}" target="_blank">打开链接</a>  
       </li>
       {{/each}}
     </ul>
