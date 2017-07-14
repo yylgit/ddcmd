@@ -4,9 +4,9 @@ var path = require('path');
 var handlebars = require('handlebars');
 var express = require('express');
 var opn = require('opn');
-exports.name = 'pagelist';
+exports.name = 'pagetable';
 exports.usage = '[options]';
-exports.desc = 'show pagelist of the project';
+exports.desc = 'show pagetable of the project';
 
 
 //准备参数
@@ -15,7 +15,7 @@ var templatePrefix = 'http://localhost:8080/smarty/';
 var pathList = [];
 var templateList = [];
 var result = '';
-var servicePort = 8090;
+var servicePort = 8091;
 
 exports.register = function (commander) {
     commander
@@ -88,7 +88,7 @@ function getTemplate() {
 }
 
 function getResult() {
-  var rawTemplate = fs.readFileSync(path.join(__dirname,'./pagelist.hbs'),'utf8');
+  var rawTemplate = fs.readFileSync(path.join(__dirname,'./pagetable.hbs'),'utf8');
   var compileTemplate = handlebars.compile(rawTemplate);
   return compileTemplate({
     pageList: pathList.concat(templateList)

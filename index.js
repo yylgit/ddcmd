@@ -4,8 +4,12 @@ var path = require('path');
 var commander = require('commander');
 var package = require('./package.json');
 var argv = process.argv;
-
-
+/** 
+ * dd -h
+ * [ '/Users/didi/.nvm/versions/node/v7.9.0/bin/node',
+  '/Users/didi/.nvm/versions/node/v7.9.0/bin/dd',
+  '-h' ]
+ * */ 
 var first = argv[2];
 if(argv.length < 3 || first === '-h' ||  first === '--help'){
     help();
