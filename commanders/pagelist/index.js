@@ -29,13 +29,13 @@ exports.register = function (commander) {
 
       servicePort = options.serviceport || servicePort;
       
-      if(options.port) {
+      if(options && options.port) {
         pagePrefix = pagePrefix.replace('8080',options.port);
         templatePrefix = templatePrefix.replace('8080',options.port);
       }
 
       var root = process.cwd();
-      if(options.root) {
+      if(options && options.root) {
         root = path.resolve(options.root)
       }
 
